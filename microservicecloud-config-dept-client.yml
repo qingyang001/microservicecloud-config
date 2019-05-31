@@ -1,0 +1,115 @@
+﻿spriing:
+  profiles:
+    active: dev
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.atguigu.springcloud.entities    # 所有Entity别名类所在包
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+
+---
+server:
+  port: 8001
+
+spring:
+   profiles: dev
+   application:
+    name: microservicecloud-config-dept-client
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/cloudDB01?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+      username: root
+      password: root
+      #配置初始化大小/最小/最大
+      #初始化时建立物理连接的个数
+      initial-size: 1
+      #最小连接池数量
+      min-idle: 1
+      #最大连接池数量
+      max-active: 5
+      #获取连接等待超时时间,单位毫秒
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      #用来检测连接是否有效的sql
+      validation-query: select 1 from dual
+      #建议配置为true，不影响性能，并且保证安全性
+      test-while-idle: true
+      #这两个建议设置为false，true会影响性能
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 100
+      
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+       defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: microservicecloud-dept8001
+    prefer-ip-address: true     #访问路径可以显示IP地址
+
+info:
+  app.name: microservicecloud-config-dept-client1
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+server:
+  port: 8001
+
+spring:
+   profiles: test
+   application:
+    name: microservicecloud-config-dept-client
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/cloudDB02?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+      username: root
+      password: root
+      #配置初始化大小/最小/最大
+      #初始化时建立物理连接的个数
+      initial-size: 1
+      #最小连接池数量
+      min-idle: 1
+      #最大连接池数量
+      max-active: 5
+      #获取连接等待超时时间,单位毫秒
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      #用来检测连接是否有效的sql
+      validation-query: select 1 from dual
+      #建议配置为true，不影响性能，并且保证安全性
+      test-while-idle: true
+      #这两个建议设置为false，true会影响性能
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 100
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+       defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: microservicecloud-dept8001
+    prefer-ip-address: true     #访问路径可以显示IP地址
+
+info:
+  app.name: microservicecloud-config-dept-client2
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+
