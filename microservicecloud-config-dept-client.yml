@@ -20,7 +20,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/cloudDB03?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+      url: jdbc:mysql://localhost:3306/cloudDB01?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
       username: root
       password: root
       #配置初始化大小/最小/最大
